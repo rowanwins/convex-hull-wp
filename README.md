@@ -1,31 +1,39 @@
-# shamos-hoey
-A small and fast module for checking for self intersections of polygons using the Shamos-Hoey algorithm.
+# convex-hull-wp
+A small and fast module for generating convex hulls from a set of points based on the algorithm by Wijeweera & Pinidiyaarachchi.
 
 ## Install
 ````
-npm install shamos-hoey
+npm install convex-hull-wp
 ````
 
 ## Documentation
-Valid inputs: Geojson features or geometries inc `Polygon`, `LineString`, `MultiPolygon` & `MultiLineString`.
-
+Takes an array of `[x, y]` coordinates and returns the same
 ````js
-    const isSimple = require('shamos-hoey')
+    const convexHull = require('convex-hull-wp')
 
-    const box = {type: 'Polygon', coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]]}
-    isSimple(box)
-    // true
+    const coords = [[42, 23], [46, 15], [51, 27], [34, 22], [54, 22]]
+    convexHull(coords)
+    // => [ [ 34, 22 ], [ 51, 27 ], [ 54, 22 ], [ 46, 15 ], [ 34, 22 ] ]
 ````
 
-## Options
-Optionally accepts a second argument as an `Object`, with a setting called `booleanOnly`. If `booleanOnly` is set to `false` then you get back an array of xy coords.
-````js
-    const isSimple = require('shamos-hoey')
+### Benchmarks
+This library performs very well compared to equivalent js libraries.
+````
+// 10 points
+// Convex Hull - WP x 1,631,956 ops/sec ±1.09% (93 runs sampled)
+// monotone-convex-hull-2d x 631,516 ops/sec ±1.12% (87 runs sampled)
+// convexhullJs x 712,072 ops/sec ±0.90% (91 runs sampled)
+// convexHull x 569,445 ops/sec ±0.52% (94 runs sampled)
+// - Fastest is Convex Hull - WP
 
-    const kinkedbox = {type: 'Polygon', coordinates: [[[0, 0], [1, 0], [1, 1], [1.5, 0.5], [0, 0]]]}
-    const kinks = isSimple(box, {booleanOnly: false})
-    // [ { x: 1, y: 0.3333333333333333 } ]
+// 1000 points
+// Convex Hull - WP x 28,722 ops/sec ±0.93% (89 runs sampled)
+// monotone-convex-hull-2d x 4,580 ops/sec ±0.61% (91 runs sampled)
+// convexhullJs x 5,521 ops/sec ±0.88% (91 runs sampled)
+// convexHull x 4,635 ops/sec ±0.87% (93 runs sampled)
+// - Fastest is Convex Hull - WP
 ````
 
 ## Further Reading
-[Geom algorithms](http://geomalgorithms.com/a09-_intersect-3.html#Shamos-Hoey-Algorithm)
+[An Efficient Convex Hull Algorithm for a Planer Set of Points]() - by Wijeweera & Pinidiyaarachchi
+Interestingly this algorithm could be sped up by applying parallel processing to each quadant of the hull.

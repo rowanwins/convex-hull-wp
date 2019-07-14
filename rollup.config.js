@@ -14,14 +14,14 @@ const output = (file, plugins) => ({
 
 export default [
     output('./dist/convexHull.js', [
-        // strip({
-        //     functions: ['debugEventAndSegment', 'debugEventAndSegments']
-        // })
+        strip({
+            functions: ['debugStartEndHull', 'debugOutQuadrantHull', 'debugQuadrantPoints']
+        })
     ]),
     output('./dist/convexHull.min.js', [
-        // strip({
-        //     functions: ['debugEventAndSegment', 'debugEventAndSegments']
-        // }),
+        strip({
+            functions: ['debugStartEndHull', 'debugOutQuadrantHull', 'debugQuadrantPoints']
+        }),
         terser()
     ])
 ]

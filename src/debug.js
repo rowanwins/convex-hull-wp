@@ -1,38 +1,38 @@
-export function debugQuadrantPoints (ax, ay, bx, by, cx, cy, dx, dy) {
+export function debugQuadrantPoints (regionA, regionB, regionC, regionD) {
     if (process.env.NODE_ENV !== 'development') return
     const map = window.map
 
     const points = L.layerGroup([]).addTo(map)
 
-    ax.forEach(function(p, i) {
-        L.circleMarker([ay[i], ax[i]], {
+    regionA.forEach(function(p) {
+        L.circleMarker([p[1], p[0]], {
             color: 'green'
         }).addTo(points)
     })
 
-    bx.forEach(function(p, i) {
-        L.circleMarker([by[i], bx[i]], {
+    regionB.forEach(function(p) {
+        L.circleMarker([p[1], p[0]], {
             color: 'red',
             radius: 7
         }).addTo(points)
     })
 
-    cx.forEach(function(p, i) {
-        L.circleMarker([cy[i], cx[i]], {
+    regionC.forEach(function(p) {
+        L.circleMarker([p[1], p[0]], {
             color: 'blue'
         }).addTo(points)
     })
 
-    dx.forEach(function(p, i) {
-        L.circleMarker([dy[i], dx[i]], {
+    regionD.forEach(function(p) {
+        L.circleMarker([p[1], p[0]], {
             color: 'grey',
             radius: 7
         }).addTo(points)
     })
 
-    // debugger
+    debugger
 
-    // points.clearLayers()
+    points.clearLayers()
 
 }
 
@@ -48,16 +48,16 @@ export function debugOutQuadrantHull(points) {
     line.clearLayers()
 }
 
-export function debugStartEndHull(startx, starty, endx, endy) {
+export function debugStartEndHull(start, end) {
     if (process.env.NODE_ENV !== 'development') return
     const map = window.map
 
     const points = L.layerGroup([]).addTo(map)
-    L.circleMarker([starty, startx], {
+    L.circleMarker([start[1], start[0]], {
         color: 'green'
     }).addTo(points)
 
-    L.circleMarker([endy, endx], {
+    L.circleMarker([end[1], end[0]], {
         color: 'red'
     }).addTo(points)
 

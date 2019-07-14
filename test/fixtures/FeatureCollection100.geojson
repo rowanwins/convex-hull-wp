@@ -10,7 +10,9 @@
           9.171491267795332
         ]
       },
-      "properties": {}
+      "properties": {
+        "hullCount": 13
+      }
     },
     {
       "type": "Feature",

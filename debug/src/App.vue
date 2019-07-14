@@ -18,7 +18,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow
 })
 
-const trouble = require('../../test/fixtures/FeatureCollection10.geojson')
+const trouble = require('../../test/fixtures/FeatureCollection100.geojson')
 
 export default {
   name: 'App',
@@ -40,6 +40,7 @@ export default {
     const out = createHull(trouble.features.map(function (f) {
       return f.geometry.coordinates
     }))
+    console.log(out)
     L.geoJSON({type: 'Polygon', coordinates: [out]}).addTo(map)
 
   }
