@@ -35,5 +35,5 @@ This library performs very well compared to equivalent js libraries.
 ````
 
 ## Further Reading
-[An Efficient Convex Hull Algorithm for a Planer Set of Points]() - by Wijeweera & Pinidiyaarachchi
+[An Efficient Convex Hull Algorithm for a Planer Set of Points](https://github.com/rowanwins/convex-hull-wp/blob/master/KP_Paper.pdf) - by Wijeweera & Pinidiyaarachchi
 Interestingly this algorithm could be sped up by applying parallel processing to each quadant of the hull.
