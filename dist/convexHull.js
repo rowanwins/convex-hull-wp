@@ -2,7 +2,7 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     (global = global || self, global.convexHull = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
     // import {debugQuadrantPoints, debugOutQuadrantHull, debugStartEndHull} from './debug'
 
@@ -59,6 +59,7 @@
         processQuadrant2(maxy, maxx, regionB.length, regionB, out);
         processQuadrant3(maxx, miny, regionC.length, regionC, out);
         processQuadrant4(miny, minx, regionD.length, regionD, out);
+        out.push(out[0]);
         return out
     }
 
@@ -253,4 +254,4 @@
 
     return computeHull;
 
-}));
+})));

@@ -4,6 +4,9 @@ A small and fast module for generating convex hulls from a set of points based o
 ## Install
 ````
 npm install convex-hull-wp
+
+// Or for CLI usage
+npm install convex-hull-wp -g
 ````
 
 ## Documentation
@@ -15,6 +18,20 @@ Takes an array of `[x, y]` coordinates and returns the same
     convexHull(coords)
     // => [ [ 34, 22 ], [ 51, 27 ], [ 54, 22 ], [ 46, 15 ], [ 34, 22 ] ]
 ````
+
+## CLI Documentation
+Takes an input geojson file, and writes an output `Feature` `Polygon`
+````
+    convex-hull-wp --input /Data/in.geojson --output /Data/out.geojson
+    // => Convex Hull Done
+````
+### Options
+
+`--input OR -i` **Required** The filepath of an geojson file. Eg `--input some_input.geojson`
+`--output OR -o` The filepath to write the output to. Eg `--output hull.geojson`
+`--stdout` Write the output to stdout rather than to file. If true the output file will not be written.
+`--quiet or -q` Hides any non-error messages.
+
 
 ### Benchmarks
 This library performs very well compared to equivalent js libraries.

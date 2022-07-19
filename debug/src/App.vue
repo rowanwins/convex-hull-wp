@@ -8,7 +8,7 @@ import 'leaflet/dist/leaflet.css'
 import markerIcon from 'leaflet/dist/images/marker-icon.png'
 import marker2x from 'leaflet/dist/images/marker-icon-2x.png'
 import markerShadow from 'leaflet/dist/images/marker-shadow.png'
-import createHull from '../../src/main'
+import createHull from '../../src/main.js'
 
 // Hack to get the markers into Vue correctly
 delete L.Icon.Default.prototype._getIconUrl
@@ -18,7 +18,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow
 })
 
-const trouble = require('../../test/fixtures/FeatureCollection100.geojson')
+const trouble = require('../../test/fixtures/FeatureCollection10.geojson')
 
 export default {
   name: 'App',

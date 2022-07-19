@@ -5,6 +5,11 @@ import glob from 'glob'
 import load from 'load-json-file'
 
 import makeHull from '../src/main.js'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const fixtures = glob.sync(path.join(__dirname, 'fixtures', '*.geojson'))
 
@@ -13,6 +18,7 @@ test('fixtures', (t) => {
         const name = path.parse(filepath).name;
         const geojson = load.sync(filepath);
         const out = makeHull(geojson.features.map(f => f.geometry.coordinates))
+        console.log(JSON.stringify(out))
         t.is(out.length, geojson.features[0].properties.hullCount, `${name}`);
     });
 })
