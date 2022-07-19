@@ -9,7 +9,7 @@ npm install convex-hull-wp
 npm install convex-hull-wp -g
 ````
 
-## Documentation
+## API Documentation
 Takes an array of `[x, y]` coordinates and returns the same
 ````js
     const convexHull = require('convex-hull-wp')
@@ -25,11 +25,14 @@ Takes an input geojson file, and writes an output `Feature` `Polygon`
     convex-hull-wp --input /Data/in.geojson --output /Data/out.geojson
     // => Convex Hull Done
 ````
-### Options
+### CLI Options
 
 `--input OR -i` **Required** The filepath of an geojson file. Eg `--input some_input.geojson`
+
 `--output OR -o` The filepath to write the output to. Eg `--output hull.geojson`
+
 `--stdout` Write the output to stdout rather than to file. If true the output file will not be written.
+
 `--quiet or -q` Hides any non-error messages.
 
 

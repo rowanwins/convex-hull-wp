@@ -1,13 +1,13 @@
 {
   "name": "convex-hull-wp",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A module for creating a convex hull from an array of points",
   "bin": {
     "convex-hull-wp": "bin/cli.js"
   },
   "type": "module",
-  "main": "dist/convexHull.min.js",
-  "module": "src/main.js",
+  "module": "dist/convexHull.mjs",
+  "main": "dist/convexHull.cjs",
   "unpkg": "dist/convexHull.min.js",
   "jsdelivr": "dist/convexHull.min.js",
   "scripts": {
